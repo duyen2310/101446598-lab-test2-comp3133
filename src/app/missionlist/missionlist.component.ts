@@ -3,12 +3,26 @@ import { SpacexService } from '../services/spacex.service';
 import { CommonModule } from '@angular/common'; 
 import { MissionfilterComponent } from '../missionfilter/missionfilter.component';
 import { Router } from '@angular/router';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-missionlist',
   standalone: true,  
-  imports: [CommonModule, MissionfilterComponent], 
+  imports: [
+    CommonModule,
+    MissionfilterComponent,
+    MatCardModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatInputModule,
+    MatSelectModule,
+    MatIconModule,
+  ], 
   templateUrl: './missionlist.component.html',
   styleUrls: ['./missionlist.component.css']
 })

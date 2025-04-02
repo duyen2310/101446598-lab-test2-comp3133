@@ -1,19 +1,30 @@
-<app-missionfilter (filterChanged)="applyFilter($event)"></app-missionfilter>
 
-<div class="container">
-  <h2>SpaceX Launches</h2>
-  <div *ngFor="let mission of filteredMissions" class="card">
-    <img [src]="mission.links.mission_patch_small" alt="{{ mission.mission_name }}" />
-    <h3>{{ mission.mission_name }}</h3>
-    <p><strong>Flight Number:</strong> {{ mission.flight_number }}</p>
-    <p><strong>Launch Year:</strong> {{ mission.launch_year }}</p>
-    <p><strong>Rocket:</strong> {{ mission.rocket.rocket_name }} ({{ mission.rocket.rocket_type }})</p>
-    <p>{{ mission.details || 'No details available' }}</p>
-    <div class="links">
-      <a *ngIf="mission.links.article_link" [href]="mission.links.article_link" target="_blank">Article</a> |
-      <a *ngIf="mission.links.wikipedia" [href]="mission.links.wikipedia" target="_blank">Wikipedia</a> |
-      <a *ngIf="mission.links.video_link" [href]="mission.links.video_link" target="_blank">Video</a>
-    </div>
-    <button (click)="viewDetails(mission.flight_number)">View Details</button>
+
+<div class="content">
+  <app-missionfilter (filterChanged)="applyFilter($event)"></app-missionfilter>
+
+  <div class="mission-grid">
+    <mat-card *ngFor="let mission of filteredMissions" class="mission-card">
+      <mat-card-header>
+        <mat-card-title class="mission-title">{{ mission.mission_name }}</mat-card-title>
+        <mat-card-subtitle class="flight-number">Flight #: {{ mission.flight_number }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <img mat-card-image class="mission-patch" [src]="mission.links.mission_patch_small" alt="{{ mission.mission_name }}" />
+
+      <mat-card-content>
+        <p class="launch-year"><strong>Launch Year:</strong> {{ mission.launch_year }}</p>
+        <p class="rocket-info"><strong>Rocket:</strong> {{ mission.rocket.rocket_name }} ({{ mission.rocket.rocket_type }})</p>
+        <p class="mission-details">{{ mission.details || 'No details available' }}</p>
+      </mat-card-content>
+
+      <mat-card-actions class="action-buttons">
+        <a *ngIf="mission.links.article_link" mat-button color="accent" [href]="mission.links.article_link" target="_blank">📰 Article</a>
+        <a *ngIf="mission.links.wikipedia" mat-button color="warn" [href]="mission.links.wikipedia" target="_blank">📖 Wikipedia</a>
+        <a *ngIf="mission.links.video_link" mat-button color="primary" [href]="mission.links.video_link" target="_blank">🎥 Video</a>
+      </mat-card-actions>
+
+      <button mat-button (click)="viewDetails(mission.flight_number)">View Details</button>
+    </mat-card>
   </div>
 </div>
