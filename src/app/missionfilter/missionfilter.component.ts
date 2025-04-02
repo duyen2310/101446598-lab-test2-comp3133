@@ -1,15 +1,18 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-missionfilter',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './missionfilter.component.html',
   styleUrl: './missionfilter.component.css'
 })
 export class MissionfilterComponent {
-  @Output() filterYear = new EventEmitter<string>();
+  @Output() filterChanged = new EventEmitter<string>();
 
-  applyFilter(year: string) {
-    this.filterYear.emit(year);
+  onFilterChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.filterChanged.emit(target.value);
   }
 }

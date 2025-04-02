@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { SpacexService } from '../services/spacex.service';
-import { CommonModule } from '@angular/common';  // Needed for `ngFor`
+import { CommonModule } from '@angular/common'; 
+import { MissionfilterComponent } from '../missionfilter/missionfilter.component';
 
 @Component({
   selector: 'app-missionlist',
-  standalone: true,  // Declare this component as standalone
-  imports: [CommonModule],  // Import CommonModule for ngFor to work
+  standalone: true,  
+  imports: [CommonModule, MissionfilterComponent], 
   templateUrl: './missionlist.component.html',
   styleUrls: ['./missionlist.component.css']
 })
 export class MissionlistComponent implements OnInit {
   missions: any[] = [];
+  filteredMissions: any[] = [];
 
   constructor(private spacexService: SpacexService) {}
 
@@ -22,8 +24,7 @@ export class MissionlistComponent implements OnInit {
     if (year) {
       this.spacexService.getLaunchesByYear(year).subscribe(
         data => {
-          console.log('Launches filtered by year:', data);
-          this.missions = data;
+          this.filteredMissions = data;
         },
         error => {
           console.error('Error fetching launches:', error);
@@ -32,13 +33,16 @@ export class MissionlistComponent implements OnInit {
     } else {
       this.spacexService.getLaunches().subscribe(
         data => {
-          console.log('All launches:', data);
-          this.missions = data;
+          this.filteredMissions = data;
         },
         error => {
           console.error('Error fetching launches:', error);
         }
       );
     }
+  }
+
+  applyFilter(year: string): void {
+    this.loadMissions(year);
   }
 }
