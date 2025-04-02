@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { mission } from '../models/mission';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,12 @@ export class SpacexService {
     return this.http.get<any[]>(this.url);
   }
 
-  getLaunchesByYear(year: string): Observable<any[]> {
+  getLaunchesByYear(year: string): Observable<mission[]> {
     return this.http.get<any[]>(`${this.url}?launch_year=${year}`);
   }
 
-  getMissionDetails(id: number): Observable<any> {
+  getMissionDetails(id: number): Observable<mission
+  > {
     return this.http.get<any>(`${this.url}/${id}`);
   }
 }
