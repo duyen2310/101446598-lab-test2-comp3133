@@ -18,4 +18,8 @@ export class SpacexService {
   getLaunchesByYear(year: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.url}?launch_year=${year}`);
   }
+
+  getMissionDetails(id: number): Observable<any> {
+    return this.http.get<any>(`${this.url}/${id}`);
+  }
 }

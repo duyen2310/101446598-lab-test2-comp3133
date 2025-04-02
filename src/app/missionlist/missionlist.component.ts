@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { SpacexService } from '../services/spacex.service';
 import { CommonModule } from '@angular/common'; 
 import { MissionfilterComponent } from '../missionfilter/missionfilter.component';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-missionlist',
@@ -14,8 +16,11 @@ export class MissionlistComponent implements OnInit {
   missions: any[] = [];
   filteredMissions: any[] = [];
 
-  constructor(private spacexService: SpacexService) {}
-
+  constructor(
+    private spacexService: SpacexService,
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {}
   ngOnInit(): void {
     this.loadMissions();
   }
@@ -44,5 +49,11 @@ export class MissionlistComponent implements OnInit {
 
   applyFilter(year: string): void {
     this.loadMissions(year);
+  }
+
+  viewDetails(missionId: number) {
+    this.router.navigate(['/details', missionId]).then(() => {
+      this.cdr.detectChanges();
+    });
   }
 }

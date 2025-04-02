@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MissionlistComponent } from './missionlist/missionlist.component';
 import { CommonModule } from '@angular/common';
-
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, MissionlistComponent],
+  imports: [RouterModule, CommonModule, MissionlistComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -14,5 +14,6 @@
       <a *ngIf="mission.links.wikipedia" [href]="mission.links.wikipedia" target="_blank">Wikipedia</a> |
       <a *ngIf="mission.links.video_link" [href]="mission.links.video_link" target="_blank">Video</a>
     </div>
+    <button (click)="viewDetails(mission.flight_number)">View Details</button>
   </div>
 </div>
