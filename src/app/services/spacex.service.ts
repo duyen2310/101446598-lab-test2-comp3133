@@ -7,15 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class SpacexService {
 
-  private apiUrl = 'https://api.spacexdata.com/v3/launches';
+  private url = 'https://api.spacexdata.com/v3/launches';
 
   constructor(private http: HttpClient) {}
 
   getLaunches(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<any[]>(this.url);
   }
 
   getLaunchesByYear(year: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}?launch_year=${year}`);
+    return this.http.get<any[]>(`${this.url}?launch_year=${year}`);
   }
 }

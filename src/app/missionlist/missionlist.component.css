@@ -1,0 +1,25 @@
+.container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  img {
+    width: 100px;
+    height: auto;
+  }
+  
+  .links a {
+    color: blue;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+  
