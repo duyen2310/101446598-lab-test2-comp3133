@@ -66,7 +66,7 @@ export class MissionlistComponent implements OnInit {
   }
 
   viewDetails(missionId: number) {
-    this.router.navigate(['/details', missionId]).then(() => {
+    this.router.navigate(['/details'], { queryParams: { id: missionId } }).then(() => {
       this.cdr.detectChanges();
     });
   }

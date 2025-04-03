@@ -32,7 +32,7 @@ export class MissiondetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
+    this.route.queryParamMap.subscribe(params => {
       const id = params.get('id');
       if (id) {
         this.missionId = +id;

@@ -4,4 +4,5 @@ import { MissiondetailsComponent } from './missiondetails/missiondetails.compone
 
 export const routes: Routes = [
     { path: '', component: MissionlistComponent },
-    { path: 'details/:id', component: MissiondetailsComponent },];
+    { path: 'details', component: MissiondetailsComponent, data: { prerender: false } }
+    ,];
